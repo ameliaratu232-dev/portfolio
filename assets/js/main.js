@@ -109,6 +109,77 @@
     });
   };
 
+  let lastScroll = 0;
+  const header = document.querySelector(".site-header");
+  const projectsSection = document.querySelector("#expertise");
+
+  window.addEventListener("scroll", () => {
+    const currentScroll = window.scrollY;
+    const projectsPosition = projectsSection.offsetTop;
+
+    if (currentScroll > lastScroll && currentScroll > projectsPosition) {
+      // scrolling down
+      header.classList.add("hide");
+    } else {
+      // scrolling up
+      header.classList.remove("hide");
+    }
+
+    lastScroll = currentScroll;
+  });
+
+  const upButton = document.querySelector(".up-to-button");
+
+  window.addEventListener("scroll", () => {
+
+    const projectsPosition = projectsSection.offsetTop;
+    const scrollPosition = window.scrollY;
+
+
+    if (scrollPosition >= projectsPosition) {
+      // reached projects section
+      upButton.classList.add("show");
+    } else {
+      // back to first section
+      upButton.classList.remove("show");
+    }
+
+  });
+
+  const menuButton = document.querySelector(".menu-toggle");
+  const nav = document.querySelector(".site-nav");
+  const navLinks = document.querySelectorAll(".site-nav a");
+
+
+  menuButton.addEventListener("click", () => {
+    nav.classList.toggle("active");
+  });
+
+
+  // Close sidebar when clicking nav item
+  navLinks.forEach(link => {
+
+    link.addEventListener("click", () => {
+
+      nav.classList.remove("active");
+
+    });
+
+  });
+
+  // smooth scroll to top
+  document.querySelector(".up-to-button a")
+  .addEventListener("click", (e) => {
+
+    e.preventDefault();
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+
+  });
+
   if ("requestIdleCallback" in window) {
     window.requestIdleCallback(preload, { timeout: 2000 });
   } else {
