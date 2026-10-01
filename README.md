@@ -1,4 +1,4 @@
-# LAM LE — Static Interactive Portfolio
+# DIDA NURFADILAH — Static Interactive Portfolio
 
 This version uses only HTML, Bootstrap CSS, custom CSS, and vanilla JavaScript.
 It does not require Node.js, a database, an API, or a web server.
